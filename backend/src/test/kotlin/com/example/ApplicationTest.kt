@@ -6,6 +6,7 @@ import io.ktor.server.testing.*
 import kotlin.test.*
 import io.ktor.http.*
 import com.example.plugins.*
+import io.ktor.client.call.*
 
 class ApplicationTest {
     @Test
@@ -13,9 +14,9 @@ class ApplicationTest {
         application {
             configureRouting()
         }
-        client.get("/").apply {
-            assertEquals(HttpStatusCode.OK, status)
-            assertEquals("Hello World!", bodyAsText())
+        client.delete("/customer").apply {
+            assertEquals(HttpStatusCode.BadRequest, status)
+            assertEquals("Missing customer ID", bodyAsText())
         }
     }
 }

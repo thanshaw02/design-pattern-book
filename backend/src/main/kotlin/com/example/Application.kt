@@ -2,22 +2,18 @@ package com.example
 
 import io.ktor.server.application.*
 import com.example.plugins.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
 
-fun main(args: Array<String>) {
-  io.ktor.server.netty.EngineMain.main(args)
+// NOTE: If testing using cURL DO NOT use "127.0.0.1" or "localhost" for the host. You must use your machines IPv4 address instead,
+//       you do not need to do this when testing in the browser, however.
 
-//  embeddedServer(Netty, port = 8000, host = "121.0.0.1", module = Application::module)
-//    .start(wait = true)
-}
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 
 @Suppress("unused") // application.conf references the main function. This annotation prevents the IDE from marking it as unused.
 fun Application.module() {
   configureSerialization()
-  configureDatabases()
+//  configureDatabases()
   configureHTTP()
-  configureSecurity()
+//  configureSecurity()
   configureRouting()
 }
