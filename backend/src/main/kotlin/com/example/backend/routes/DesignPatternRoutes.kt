@@ -1,5 +1,8 @@
 package com.example.backend.routes
 
+import com.example.backend.models.DesignPattern
+import com.example.backend.providers.designPatternController
+import com.google.gson.Gson
 import io.vertx.core.Handler
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.RoutingContext
@@ -7,8 +10,20 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 object DesignPatternRoutes {
-  fun addPattern(context: RoutingContext) {
+  suspend fun addPattern(context: RoutingContext) {
+    val postBody = context.body().asJsonObject().toString()
+//    val gson = Gson()
+//    val designPattern = gson.fromJson(postBody, DesignPattern::class.java)
+    println("POST body: $postBody")
 
+//    designPatternController.addPattern(DesignPattern(
+//      name = "",
+//      forces = "",
+//      resolution = "",
+//      codeExamples = "",
+//      precedingPatter = "",
+//      followingPattern = ""
+//    ))
   }
 
   fun editPattern(context: RoutingContext) {
