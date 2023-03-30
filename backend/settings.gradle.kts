@@ -1,1 +1,1 @@
-rootProject.name = "com.example.design-pattern-book"
+rootProject.name = "backend"
