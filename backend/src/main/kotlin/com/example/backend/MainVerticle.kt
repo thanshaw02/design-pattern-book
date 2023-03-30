@@ -1,9 +1,6 @@
 package com.example.backend
 
 import com.example.backend.routes.DesignPatternRoutes
-import io.vertx.core.AbstractVerticle
-import io.vertx.core.Promise
-import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.Route
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.RoutingContext
@@ -12,6 +9,13 @@ import io.vertx.ext.web.handler.CorsHandler
 import io.vertx.kotlin.coroutines.CoroutineVerticle
 import io.vertx.kotlin.coroutines.dispatcher
 import kotlinx.coroutines.launch
+
+/**
+ * How to start the server:
+ *  - "cd" into "/design-pattern-book/backend"
+ *  - run "./gradlew run"
+ *    - if an error is thrown run "./gradlew --stop" then re-run "./gradlew run"
+ */
 
 class MainVerticle : CoroutineVerticle() {
 
@@ -24,40 +28,35 @@ class MainVerticle : CoroutineVerticle() {
 
     // Create router endpoints
     router.apply {
-      post("/design-patterns/addPattern")
+      post("/design-patterns")
         .handler(BodyHandler.create())
         .coroutineHandler { context ->
           DesignPatternRoutes.addPattern(context)
         }
-//      post("/design-patterns/addPattern").handler(BodyHandler.create()).handler(DesignPatternRoutes::addPattern)
 
-      put("/design-patterns/editPattern")
+      put("/design-patterns/:id")
         .handler(BodyHandler.create())
         .coroutineHandler { context ->
           DesignPatternRoutes.editPattern(context)
         }
-//      put("/design-patterns/editPattern").handler(BodyHandler.create()).handler(DesignPatternRoutes::editPattern)
 
       get("/design-patterns")
         .handler(BodyHandler.create())
         .coroutineHandler { context ->
           DesignPatternRoutes.getAllPatterns(context)
         }
-//      get("/design-patterns").handler(BodyHandler.create()).handler(DesignPatternRoutes::getAllPatterns)
 
       get("/design-patterns/:id")
         .handler(BodyHandler.create())
         .coroutineHandler { context ->
           DesignPatternRoutes.getPatternById(context)
         }
-//      get("/design-patterns/:id").handler(BodyHandler.create()).handler(DesignPatternRoutes::getPatternById)
 
-      delete("/design-patterns/removePattern")
+      delete("/design-patterns/:id")
         .handler(BodyHandler.create())
         .coroutineHandler { context ->
           DesignPatternRoutes.removePattern(context)
         }
-//      delete("/design-patterns/removePattern").handler(BodyHandler.create()).handler(DesignPatternRoutes::removePattern)
     }
 
     // Create the HTTP server
@@ -68,7 +67,7 @@ class MainVerticle : CoroutineVerticle() {
       .listen(8000)
       // Print the port
       .onSuccess { server ->
-        println("HTTP server started on port " + server.actualPort())
+        println("\n\nDesign pattern HTTP server started on port ${server.actualPort()}\n\n")
       }
   }
 

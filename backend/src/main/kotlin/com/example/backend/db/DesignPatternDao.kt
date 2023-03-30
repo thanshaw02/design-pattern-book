@@ -7,8 +7,6 @@ import kotlinx.coroutines.*
 class DesignPatternDao(
   private val inMemoryDesignPatterns: MutableList<DesignPattern>
 ) {
-//  private val inMemoryDesignPatterns: MutableList<DesignPattern> = mutableListOf()
-
   suspend fun addPattern(designPattern: DesignPattern): Unit = withContext(Dispatchers.IO) {
     inMemoryDesignPatterns.add(designPattern);
   }

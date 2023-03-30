@@ -2,8 +2,6 @@ package com.example.backend.controllers
 
 import com.example.backend.db.DesignPatternDao
 import com.example.backend.models.DesignPattern
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class DesignPatternController(
   private val designPatternDao: DesignPatternDao
