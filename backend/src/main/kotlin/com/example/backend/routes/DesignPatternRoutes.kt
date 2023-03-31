@@ -42,7 +42,6 @@ object DesignPatternRoutes {
   }
 
   suspend fun editPattern(context: RoutingContext) {
-    println("\n\nHello????\n\n")
     context.response().putHeader("Content-Type", "application/json")
 
     val id = context.pathParam("id") ?: run {

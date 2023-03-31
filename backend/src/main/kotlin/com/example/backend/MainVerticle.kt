@@ -17,6 +17,25 @@ import kotlinx.coroutines.launch
  *    - if an error is thrown run "./gradlew --stop" then re-run "./gradlew run"
  */
 
+/**
+ * Testing with CURL:
+ *
+ * ADD DESIGN PATTERN ENDPOINT:
+ * curl -v -X POST -d '{ "name": "fake_name", "forces": "fake_forces", "resolution": "some_resolution", "codeExamples": "println()", "precedingPattern": "singleton", "followingPattern": "factory" }' 'http://localhost:8000/design-patterns'
+ *
+ * GET ALL PATTERNS ENDPOINT:
+ * curl -v -X GET 'http://localhost:8000/design-patterns'
+ *
+ * GET DESIGN PATTERN BY ID ENDPOINT:
+ * curl -v -X GET 'http://localhost:8000/design-patterns/bdee0b3b-1bdf-452f-818a-2fcb6d23a7b8'
+ *
+ * EDIT DESIGN PATTERN ENDPOINT:
+ * curl -v -X PUT -d '{ "name": "NEW NAME", "forces": "NEW FORCES", "resolution": "NEW RESOLUTION", "codeExamples": "throw DesignPatternIOException", "precedingPattern": "factory", "followingPattern": "singleton" }' 'http://localhost:8000/design-patterns/bdee0b3b-1bdf-452f-818a-2fcb6d23a7b8'
+ *
+ * DELETE DESIGN PATTERN ENDPOINT:
+ * curl -v -X DELETE 'http://localhost:8000/design-patterns/bdee0b3b-1bdf-452f-818a-2fcb6d23a7b8'
+ */
+
 class MainVerticle : CoroutineVerticle() {
 
   override suspend fun start() {
