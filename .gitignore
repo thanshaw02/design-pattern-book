@@ -1,21 +1,21 @@
 ## Backed ignores
 
 ### Vert.x ###
-.vertx/
+backend/.vertx/
 
 ### Eclipse ###
 
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
+backend/.metadata
+backend/bin/
+backend/tmp/
+backend/*.tmp
+backend/*.bak
+backend/*.swp
+backend/*~.nib
+backend/local.properties
+backend/.settings/
+backend/.loadpath
+backend/.recommenders
 
 # External tool builders
 backend/.externalToolBuilders/
